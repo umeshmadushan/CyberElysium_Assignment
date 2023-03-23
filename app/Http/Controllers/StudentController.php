@@ -51,4 +51,20 @@ class StudentController extends ParentController
 
     }
 
+    public function edit(Request $request)
+    {
+
+        $response ['students'] = StudentFacade::get($request['student_id']);
+
+        return view ('pages.studentList.edit')->with($response);
+    }
+
+    public function update(Request $request,$student_id)
+    {
+
+        StudentFacade::update($request->all (),$student_id);
+        return redirect()->back();
+
+    }
+
 }
