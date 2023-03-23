@@ -3,6 +3,7 @@
 namespace domain\Services;
 
 use App\Models\Student;
+use Infrastructure\Facade\ImagesFacade;
 
 class StudentService
 {
@@ -22,10 +23,13 @@ class StudentService
 
     }
 
-    public function add($data) 
+    public function store($data) 
     {
+        $image = ImagesFacade::store($data['image'],[1,2,3,4,5]);
 
-        $this->student->create($data);
+       $data['image'] = $image['created_images']->name;
+ 
+         $this->student->create($data);
 
     }
 
