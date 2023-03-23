@@ -4,21 +4,16 @@ namespace App\Http\Controllers;
 
 use App\Models\Student;
 use Illuminate\Http\Request;
+use domain\Facades\StudentFacade;
 
 class StudentController extends ParentController
 {
 
-    protected $student;
-
-    public function __construct()
-    {
-        $this->student = new Student();
-    }
 
     public function index()
     {
 
-        $response ['students'] =Student::all();
+        $response ['students'] = StudentFacade::all();
 
         return view ('pages.studentList.index')->with($response);
     }
@@ -26,8 +21,7 @@ class StudentController extends ParentController
     public function add(Request $request) 
     {
 
-        $this->student->create($request->all ());
-
+        StudentFacade::add($request->all ());
         return redirect()->back();
 
     }
@@ -36,10 +30,7 @@ class StudentController extends ParentController
     public function delete($student_id)
     {
 
-        $student = $this->student->find($student_id);
-
-        $student->delete();
-
+        StudentFacade::delete($student_id);
         return redirect()->back();
 
     }
@@ -47,11 +38,7 @@ class StudentController extends ParentController
     public function statusUpdate($student_id)
     {
 
-        $student = $this->student->find($student_id);
-
-        $student->status = "inactive";
-        $student->update();
-
+        StudentFacade::statusUpdate($student_id);
         return redirect()->back();
 
     }
@@ -59,11 +46,7 @@ class StudentController extends ParentController
     public function statusUpdateActive($student_id)
     {
 
-        $student = $this->student->find($student_id);
-
-        $student->status = "active";
-        $student->update();
-
+        StudentFacade::statusUpdateActive($student_id);
         return redirect()->back();
 
     }

@@ -15,14 +15,24 @@
             </li>
           </ul>
 
-          <form method="post" action="{{ route('logout') }}" x-data>
-            @csrf
+          @if (Auth::user())
+            <form method="post" action="{{ route('logout') }}" x-data>
+              @csrf
 
-            <x-dropdown-link href="{{ route('logout') }}"
-                     @click.prevent="$root.submit();">
-                {{ __('Log Out') }}
-            </x-dropdown-link>
-        </form>
+              <x-dropdown-link href="{{ route('logout') }}"
+                      onclick="event.preventDefault()
+                      this.closest('form').submit();">
+                  {{ __('Log Out') }}
+              </x-dropdown-link>
+            </form>
+
+          @else
+
+          <span><a href="{{ route('login') }}">Login</a></span> || <span><a href="{{ route('register') }}">Register</a></span>
+
+          @endif
+
+          
             
         </div>
       </div>
