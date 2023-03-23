@@ -62,7 +62,7 @@
                                     <th scope="row">{{$student->id}}</th>
                                     <td>{{ $student->name }}</td>
                                     <td>{{ $student->age }}</td>
-                                    <td>{{ $student->image }}</td>
+                                    <td><img class="stImg" src="{{ config('images.access_path') }}/{{ $student->image }}" width="100px"></td>
                                     <td>
                                           @if ($student->status == 'active')
                                                 <span><div class="activestatus"></div></span>
@@ -105,6 +105,10 @@
 <style>
       .page-title{
             padding-top: 10vh;
+      }
+
+      .stImg{
+            width: 100px;
       }
 
       .label{

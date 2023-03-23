@@ -18,10 +18,10 @@ class StudentController extends ParentController
         return view ('pages.studentList.index')->with($response);
     }
 
-    public function add(Request $request) 
+    public function store(Request $request) 
     {
 
-        StudentFacade::add($request->all ());
+        StudentFacade::store($request->all ());
         return redirect()->back();
 
     }
