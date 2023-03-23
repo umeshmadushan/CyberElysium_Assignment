@@ -24,6 +24,8 @@ Route::prefix('/students')->group(function() {
       Route::get('/',[StudentController::class,'index'])->name('studentList');
       Route::post('/add',[StudentController::class,'store'])->name('studentList.add');
       Route::get('/{student_id}/delete',[StudentController::class,'delete'])->name('student.delete');
+      Route::get('/{student_id}/edit',[StudentController::class,'edit'])->name('student.edit');
+      Route::post('/{student_id}/update',[StudentController::class,'update'])->name('student.update');
       Route::get('/{student_id}/statusUpdate',[StudentController::class,'statusUpdate'])->name('student.statusUpdate');
       Route::get('/{student_id}/statusUpdateactive',[StudentController::class,'statusUpdateActive'])->name('student.statusUpdateactive');
 });
