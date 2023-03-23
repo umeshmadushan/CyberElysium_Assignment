@@ -23,6 +23,13 @@ class StudentService
 
     }
 
+
+    public function allActive()
+    {
+        return $this->student->where('status', 'active')->get();
+    }
+
+
     public function store($data) 
     {
         $image = ImagesFacade::store($data['image'],[1,2,3,4,5]);
